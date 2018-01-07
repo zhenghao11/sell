@@ -1,0 +1,34 @@
+spring:
+   datasource:
+       driver-class-name: com.mysql.jdbc.Driver
+       username: root
+       password: 940215
+       url: jdbc:mysql://127.0.0.1:3306/sell?characterEncoding=utf-8&useSSL=false
+   jpa:
+     show-sql: true
+ #  redis:
+  #   host: 192.168.0.106
+   #  port: 6379
+
+server:
+   context-path: /
+   port: 8080
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  typeAliasesPackage: com.my.sell.model
+
+logging:
+  level:
+    com.my.sell.mapper: debug
+
+wechat:
+   #用自己申请的测试公众号认证登录
+   appAuthID: wx5f39f46506c5635f
+   #借用师兄干货的支付帐号
+   appPayID: wxd898fcb01713c658
+   appSecret: f4f349786d99ba632895f2990f7ecff5
+   mchId: 1483469312
+   mchKey: C5245D70627C1F8E9964D494B0735025
+   keyPath: F:/git/qianduansell/weChat/h5.p12
+   notifyUrl: http://selltuoniu.s1.natapp.cc/pay/notify

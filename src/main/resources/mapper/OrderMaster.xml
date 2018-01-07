@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.my.sell.mapper.OrderMasterMapper">
+    <resultMap id="BaseResultMap" type="com.my.sell.model.OrderMaster">
+        <result column="order_id" property="orderId" jdbcType="VARCHAR"/>
+        <result column="buyer_name" property="buyerName" jdbcType="VARCHAR"/>
+        <result column="buyer_phone" property="buyerPhone" jdbcType="VARCHAR"/>
+        <result column="buyer_address" property="buyerAddress" jdbcType="VARCHAR"/>
+        <result column="buyer_openid" property="buyerOpenid" jdbcType="VARCHAR"/>
+        <result column="order_amount" property="orderAmount" jdbcType="DECIMAL"/>
+        <result column="order_status" property="orderStatus" jdbcType="INTEGER"/>
+        <result column="pay_status" property="payStatus" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="BaseSql" >
+        order_id,buyer_name,buyer_phone,buyer_address,buyer_openid,order_amount,order_status,pay_status,update_time,create_time
+    </sql>
+
+    <select id="findByKeyword" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="BaseSql" />
+        from order_master where order_id like '%${keyword}%'
+        order by update_time desc
+    </select>
+</mapper>

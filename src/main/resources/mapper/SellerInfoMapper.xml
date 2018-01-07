@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.my.sell.mapper.SellerInfoMapper">
+    <resultMap id="BaseResultMap" type="com.my.sell.model.SellerInfo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="openid" property="openid" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="BaseSql" >
+        id,user_name,password,openid,create_time,update_time
+    </sql>
+
+    <select id="findAllByUpdateTimeDesc" resultMap="BaseResultMap">
+        select
+        <include refid="BaseSql" />
+        from seller_info
+        order by
+        update_time desc
+    </select>
+</mapper>
