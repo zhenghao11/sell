@@ -5,7 +5,5 @@ package com.my.sell.constant;
  */
 public interface CookieConstant {
     // 校验登录信息
-    public final  String  COOKIE_NAME = "userAuthorize";
-    // cookie有效时间
-    public final  Integer COOKIE_TIME = 7200;
+    String COOKIE_NAME = "userAuthorize";
 }

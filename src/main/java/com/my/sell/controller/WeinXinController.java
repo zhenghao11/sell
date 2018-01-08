@@ -28,7 +28,7 @@ public class WeinXinController {
     WxMpService wxMpService;
 
     /**
-     * 根据code获取access_token
+     * 根据access_token获取openid
      * @param code
      */
     @GetMapping(value = "/auth")
@@ -38,7 +38,6 @@ public class WeinXinController {
         RestTemplate restTemplate = new RestTemplate();
         String forObject = restTemplate.getForObject(url, String.class);
         log.info("forObject:{}",forObject);
-
     }
 
     /**
@@ -49,14 +48,14 @@ public class WeinXinController {
     @GetMapping(value = "/authorize")
     public String authorize(@RequestParam("returnUrl") String returnUrl) throws Exception{
         log.info("returnUrl:{}",returnUrl);
-        String url = "http://selltuoniu.s1.natapp.cc/wechat/userInfo";
+        String url = "http://selltngh.natapp4.cc/wechat/userInfo";
         String redirectUrl =wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAUTH2_SCOPE_BASE, returnUrl);
         log.info("redirectUrl:{}",redirectUrl);
         return "redirect:"+redirectUrl;
     }
 
     /**
-     * 获得access token
+     * 获得openid
      * @param code
      * @param returnUrl
      * @return

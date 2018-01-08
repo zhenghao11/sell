@@ -16,9 +16,14 @@ public class SellerInfo {
     @Id
     @GeneratedValue
     private Integer id;
+
     private String userName;
+
     private String password;
+
     private String openid;
+
     private Date createTime;
+
     private Date updateTime;
 }

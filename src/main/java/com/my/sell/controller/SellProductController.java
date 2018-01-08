@@ -48,7 +48,7 @@ public class SellProductController {
      */
     @GetMapping(value = "/list")
     public ModelAndView list(@RequestParam(value = "page",defaultValue = "1") Integer page,
-                             @RequestParam(value = "size",defaultValue = "2") Integer size,
+                              @RequestParam(value = "size",defaultValue = "2") Integer size,
                              Integer tableId){
         PageRequest pageRequest = new PageRequest(page-1,size);
         Page<ProductInfo> productInfoList = productInfoService.findAll(pageRequest);

@@ -39,7 +39,7 @@
                                 <td style="text-align:center;vertical-align:middle;">${productInfo.productPrice}</td>
                                 <td style="text-align:center;vertical-align:middle;">${productInfo.productStock?c}</td>
                                 <td style="text-align:center;vertical-align:middle;">${productInfo.productDescription}</td>
-                                <td><img height="100" width="100" src="${productInfo.productIcon}"></td>
+                                <td><img height="100" width="100" src="${(productInfo.productIcon)! ''}"></td>
                                 <td style="text-align:center;vertical-align:middle;">${productInfo.getSaleEnum().getMsg()}</td>
                                 <td style="text-align:center;vertical-align:middle;">${productInfo.categoryName}</td>
                                 <td style="text-align:center;vertical-align:middle;">${productInfo.createTime}</td>
