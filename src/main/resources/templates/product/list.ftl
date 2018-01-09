@@ -44,11 +44,11 @@
                                 <td style="text-align:center;vertical-align:middle;">${productInfo.categoryName}</td>
                                 <td style="text-align:center;vertical-align:middle;">${productInfo.createTime}</td>
                                 <td style="text-align:center;vertical-align:middle;">${productInfo.updateTime}</td>
-                                <td style="text-align:center;vertical-align:middle;"><a href="/seller/product/addIndex?productId=${productInfo.productId}&page=${currentPage}">修改</a></td>
+                                <td style="text-align:center;vertical-align:middle;"><a href="/sell/seller/product/addIndex?productId=${productInfo.productId}&page=${currentPage}">修改</a></td>
                                 <#if productInfo.getSaleEnum().getCode() == 1>
-                                    <td style="text-align:center;vertical-align:middle;"><a href="/seller/product/onSale?productId=${productInfo.productId}&page=${currentPage}">上架</a></td>
+                                    <td style="text-align:center;vertical-align:middle;"><a href="/sell/seller/product/onSale?productId=${productInfo.productId}&page=${currentPage}">上架</a></td>
                                     <#else>
-                                    <td style="text-align:center;vertical-align:middle;"><a href="/seller/product/offSale?productId=${productInfo.productId}&page=${currentPage}">下架</a></td>
+                                    <td style="text-align:center;vertical-align:middle;"><a href="/sell/seller/product/offSale?productId=${productInfo.productId}&page=${currentPage}">下架</a></td>
                                 </#if>
                             </tr>
                             </#list>
@@ -60,20 +60,20 @@
                             <#if currentPage lte 1>
                                 <li class="disabled"><a href="#">上一页</a></li>
                             <#else>
-                                <li><a href="/seller/product/list?page=${currentPage-1}">上一页</a></li>
+                                <li><a href="/sell/seller/product/list?page=${currentPage-1}">上一页</a></li>
                             </#if>
                             <#list 1..totalPages as page>
                             <#if currentPage == page>
                                 <li class="disabled"><a href="#">${page}</a></li>
                             <#else>
-                                <li><a href="/seller/product/list?page=${page}">${page}</a></li>
+                                <li><a href="/sell/seller/product/list?page=${page}">${page}</a></li>
                             </#if>
                             </#list>
 
                             <#if currentPage gte totalPages>
                                 <li class="disabled"><a href="#">下一页</a></li>
                             <#else>
-                                <li><a href="/seller/product/list?page=${currentPage+1}">下一页</a></li>
+                                <li><a href="/sell/seller/product/list?page=${currentPage+1}">下一页</a></li>
                             </#if>
                         </ul>
                     </div>

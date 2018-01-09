@@ -14,7 +14,7 @@ spring:
    #  port: 6379
 
 server:
-   context-path: /
+   context-path: /sell
    port: 8080
 
 mybatis:

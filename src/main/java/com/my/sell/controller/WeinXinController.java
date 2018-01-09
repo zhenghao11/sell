@@ -48,10 +48,10 @@ public class WeinXinController {
     @GetMapping(value = "/authorize")
     public String authorize(@RequestParam("returnUrl") String returnUrl) throws Exception{
         log.info("returnUrl:{}",returnUrl);
-        String url = "http://selltngh.natapp4.cc/wechat/userInfo";
+        String url = "http://selltngh.natapp4.cc/sell/wechat/userInfo";
         String redirectUrl =wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAUTH2_SCOPE_BASE, returnUrl);
         log.info("redirectUrl:{}",redirectUrl);
-        return "redirect:"+redirectUrl;
+        return "redirect:" + redirectUrl;
     }
 
     /**
@@ -71,6 +71,6 @@ public class WeinXinController {
         }
         String openId = wxMpOAuth2AccessToken.getOpenId();
         log.info("openid:{}",openId);
-        return "redirect:"+returnUrl+"?openid="+openId;
+        return "redirect:" + returnUrl + "?openid=" + openId;
     }
 }

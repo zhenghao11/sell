@@ -58,10 +58,10 @@
                 </div>
                 <div class="col-md-12 column">
                     <#if orderMaster.getOrderMasterEnum().getMsg() == '新订单'>
-                    <a href="/seller/order/finish?orderId=${orderMaster.orderId}" type="button" class="btn btn-default btn-primary">完结订单</a>
-                    <a href="/seller/order/cancel?orderId=${orderMaster.orderId}" type="button" class="btn btn-default btn-danger">取消订单</a>
+                    <a href="/sell/seller/order/finish?orderId=${orderMaster.orderId}" type="button" class="btn btn-default btn-primary">完结订单</a>
+                    <a href="/sell/seller/order/cancel?orderId=${orderMaster.orderId}" type="button" class="btn btn-default btn-danger">取消订单</a>
                     </#if>
-                    <a href="/seller/order/list?page=${page}" type="button" class="btn btn-default btn-primary">返回该订单</a>
+                    <a href="/sell/seller/order/list?page=${page}" type="button" class="btn btn-default btn-primary">返回该订单</a>
                 </div>
             </div>
         </div>

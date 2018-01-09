@@ -14,7 +14,7 @@
             <div class="container-fluid">
                 <div class="row clearfix">
                     <div class="col-md-12 column">
-                        <form role="form" action="/seller/product/addOrUpdate" method="post" enctype="multipart/form-data">
+                        <form role="form" action="/sell/seller/product/addOrUpdate" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="productId" value="${(productInfo.productId)!''}">
                             <div class="form-group">
                                 <label>商品名称</label>

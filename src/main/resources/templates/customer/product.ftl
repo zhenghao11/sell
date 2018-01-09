@@ -7,9 +7,9 @@
     <meta name="keywords" content="" />
     <title>茶部落</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <script src="/jquery/jquery-3.1.1.min.js"></script>
-    <script src="/jquery/amazeui.min.js" type="text/javascript"></script>
-    <link href="/css/amazeui.min.css" type="text/css" rel="stylesheet" />
+    <script src="/sell/jquery/jquery-3.1.1.min.js"></script>
+    <script src="/sell/jquery/amazeui.min.js" type="text/javascript"></script>
+    <link href="/sell/css/amazeui.min.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 <header data-am-widget="header" class="am-header am-header-default sq-head ">
