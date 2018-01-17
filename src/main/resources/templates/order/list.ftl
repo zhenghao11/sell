@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <#include "../common/header.ftl">
-    <script src="/jquery/jquery-3.1.1.min.js"></script>
+    <script src="/sell/jquery/jquery-3.1.1.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <#--    <script type="text/javascript">
         $(function(){
@@ -69,11 +69,11 @@
                             <td>${orderMaster.getPayStatusEnum().getMsg()}</td>
                             <td>${orderMaster.createTime}</td>
                             <td>${orderMaster.updateTime}</td>
-                            <td><a href="/seller/order/detail?orderId=${orderMaster.orderId}&page=${currentPage}">详情</a></td>
+                            <td><a href="/sell/seller/order/detail?orderId=${orderMaster.orderId}&page=${currentPage}">详情</a></td>
                                 <#if orderMaster.getOrderMasterEnum().getMsg() == '新订单'>
-                                    <td><a href="/seller/order/cancel?orderId=${orderMaster.orderId}">取消</a></td>
+                                    <td><a href="/sell/seller/order/cancel?orderId=${orderMaster.orderId}">取消</a></td>
                                 </#if>
-                            <td><a href="/seller/order/delete?orderId=${orderMaster.orderId}&page=${currentPage}" class="alert-link">删除</a></td>
+                            <td><a href="/sell/seller/order/delete?orderId=${orderMaster.orderId}&page=${currentPage}" class="alert-link">删除</a></td>
                         </tr>
                         </#list>
                         </tbody>
@@ -84,20 +84,20 @@
                     <#if currentPage lte 1>
                         <li class="disabled"><a href="#">上一页</a></li>
                     <#else>
-                        <li><a href="/seller/order/list?page=${currentPage-1}">上一页</a></li>
+                        <li><a href="/sell/seller/order/list?page=${currentPage-1}">上一页</a></li>
                     </#if>
                     <#list 1..totalPages as page>
                     <#if currentPage == page>
                         <li class="disabled"><a href="#">${page}</a></li>
                     <#else>
-                        <li><a href="/seller/order/list?page=${page}">${page}</a></li>
+                        <li><a href="/sell/seller/order/list?page=${page}">${page}</a></li>
                     </#if>
                     </li>
                     </#list>
                     <#if currentPage gte totalPages>
                         <li class="disabled"><a href="#">下一页</a></li>
                     <#else>
-                        <li><a href="/seller/order/list?page=${currentPage+1}">下一页</a></li>
+                        <li><a href="/sell/seller/order/list?page=${currentPage+1}">下一页</a></li>
                     </#if>
                     </ul>
                 </div>
@@ -129,14 +129,14 @@
 
 <#--播放音乐-->
 <audio id="notice" loop="loop">
-    <source src="/mp3/Justin Bieber - Love Yourself.mp3" type="audio/mpeg" />
+    <source src="/sell/mp3/Justin Bieber - Love Yourself.mp3" type="audio/mpeg" />
 </audio>
 
 <script>
     var res = null;
     var websocket = null;
     if('WebSocket' in window) {
-        websocket = new WebSocket('ws://127.0.0.1:8080/webSocket');
+        websocket = new WebSocket('ws://127.0.0.1:8080/sell/webSocket');
     }else {
         alert('该浏览器不支持websocket!');
     }

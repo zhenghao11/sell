@@ -33,7 +33,7 @@
                                 <td align="center">${category.categoryType}</td>
                                 <td align="center">${category.createTime}</td>
                                 <td align="center">${category.updateTime}</td>
-                                <td align="center"><a href="/seller/category/updateIndex?categoryId=${category.categoryId}">修改</a></td>
+                                <td align="center"><a href="/sell/seller/category/updateIndex?categoryId=${category.categoryId}">修改</a></td>
                             </tr>
                         </#list>
                         </tbody>
@@ -44,19 +44,19 @@
                             <#if currentPage lte 1>
                                 <li class="disabled"><a href="#">上一页</a></li>
                             <#else>
-                                <li><a href="/seller/category/list?page=${currentPage-1}">上一页</a></li>
+                                <li><a href="/sell/seller/category/list?page=${currentPage-1}">上一页</a></li>
                             </#if>
                             <#list 1..totalPages as page>
                                 <#if currentPage == page>
                                     <li class="disabled"><a href="#">${page}</a></li>
                                 <#else>
-                                    <li><a href="/seller/category/list?page=${page}">${page}</a></li>
+                                    <li><a href="/sell/seller/category/list?page=${page}">${page}</a></li>
                                 </#if>
                             </#list>
                             <#if currentPage gte totalPages>
                                 <li class="disabled"><a href="#">下一页</a></li>
                             <#else>
-                                <li><a href="/seller/category/list?page=${currentPage+1}">下一页</a></li>
+                                <li><a href="/sell/seller/category/list?page=${currentPage+1}">下一页</a></li>
                             </#if>
                         </ul>
                     </div>

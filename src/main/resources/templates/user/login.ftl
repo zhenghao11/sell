@@ -6,7 +6,7 @@
     <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"/>
     <script type="text/javascript">
         function register(){
-            window.location.href = "/seller/user/goToRegister"
+            window.location.href = "/sell/seller/user/goToRegister"
         }
     </script>
 </head>
@@ -21,7 +21,7 @@
             <div class="container-fluid">
                 <div class="row clearfix">
                     <div class="col-md-12 column">
-                        <form role="form" action="/seller/user/login?returnUrl=${(returnUrl)!''}"  method="post">
+                        <form role="form" action="/sell/seller/user/login?returnUrl=${(returnUrl)!''}"  method="post">
                             <div class="form-group">
                                 <label>用户账号</label>
                                 <input type="text" class="form-control" name="userName"  placeholder="请输入账号" style="width:300px;"/>

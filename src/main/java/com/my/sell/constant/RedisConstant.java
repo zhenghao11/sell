@@ -5,7 +5,7 @@ package com.my.sell.constant;
  */
 public interface RedisConstant {
     // 保存到redis 用户名前缀
-    public final String REDIS_NAME = "userName";
+    String REDIS_NAME = "userName";
     // 用户有效时间
-    public final Long REDIS_TIME = 7200l;
+    Long REDIS_TIME = 7200l;
 }

@@ -10,7 +10,7 @@
             $("#mobile").click(function(){
                 var phoneReg = $("#phone").val();
                 $("#phone").text(phoneReg);
-                $.post("/seller/user/getMobileText",{mobile:phoneReg},function(data){
+                $.post("/sell/seller/user/getMobileText",{mobile:phoneReg},function(data){
                     mobileReg = data;
                 });
             })
@@ -40,7 +40,7 @@
             <div class="container-fluid">
                 <div class="row clearfix">
                     <div class="col-md-12 column">
-                        <form role="form" action="/seller/user/register" method="post" id="submitR">
+                        <form role="form" action="/sell/seller/user/register" method="post" id="submitR">
                             <div class="form-group">
                                 <label>用户账号</label>
                                 <input type="text" class="form-control" name="userName"  placeholder="请输入账号" style="width:300px;"/>

@@ -77,7 +77,7 @@ public class PayController extends BaseController{
         log.info("【payResponse:{}】",com.my.sell.utils.JsonUtil.modelToJson(payResponse));
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("payResponse",payResponse);
-        map.put("returnUrl","http://sell.springboot.cn/#/order/"+orderMaster.getOrderId());
+        map.put("returnUrl","http://selltngh.com/#/order/"+orderMaster.getOrderId());
         return new ModelAndView("pay/create",map);
     }
 

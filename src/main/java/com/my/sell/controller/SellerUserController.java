@@ -68,7 +68,7 @@ public class SellerUserController {
         }
         String key = UUID.randomUUID().toString();
         // 添加信息到redis
-        stringRedisTemplate.opsForValue().set(key,RedisConstant.REDIS_NAME,60l, TimeUnit.SECONDS);
+        stringRedisTemplate.opsForValue().set(key,RedisConstant.REDIS_NAME,RedisConstant.REDIS_TIME, TimeUnit.SECONDS);
         // 添加信息到cookie
         CookieUtil.addCookie(CookieConstant.COOKIE_NAME,key,-1,response);
         // 跳转到未登录前访问的页面

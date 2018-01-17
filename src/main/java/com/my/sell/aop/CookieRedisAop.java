@@ -29,48 +29,32 @@ import java.util.concurrent.TimeUnit;
 @Component
 @Aspect
 public class CookieRedisAop {
+
+    private ServletRequestAttributes requestAttributes;
+
     @Autowired
     StringRedisTemplate stringRedisTemplate;
+
     @Autowired
     RedisTemplate redisTemplate;
 
- /*   @Pointcut("execution(* com.my.sell.controller.*.*(..))"+
-    "&& !execution(* com.my.sell.controller.SellerUserController.*(..))")
-    public void verify(){}*/
+  /*  @Pointcut("execution(* com.my.sell.controller.*.*(..))" + "&& !execution(* com.my.sell.controller.SellerUserController.*(..))")
+    public void verify(){}
 
 
 
-/*    @Before("verify()")
+    @Before("verify()")
     public void doVerify(){
-        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = requestAttributes.getRequest();
-        HttpServletResponse response = requestAttributes.getResponse();
+
         Cookie cookie = CookieUtil.getCookie(request, CookieConstant.COOKIE_NAME);
         // 获取cookie
         if(null == cookie) throw new SellAuthorizeException();
         // 获取redis
         String redisValue = stringRedisTemplate.opsForValue().get(cookie.getValue());
         if(StringUtils.isEmpty(redisValue)) throw new SellAuthorizeException();
-        // 重新设置cookie和redis的有效时间
-        CookieUtil.addCookie(cookie.getName(),cookie.getValue(),CookieConstant.COOKIE_TIME,response);
+        // 重新设置redis的有效时间
         stringRedisTemplate.opsForValue().set(cookie.getValue(),RedisConstant.REDIS_NAME,RedisConstant.REDIS_TIME,TimeUnit.SECONDS);
     }*/
-
-   /* @Before("verify()")
-    public void doVerify() {
-        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request = requestAttributes.getRequest();
-        HttpServletResponse response = requestAttributes.getResponse();
-        Cookie cookie = CookieUtil.getCookie(request, CookieConstant.COOKIE_NAME);
-        // 获取cookie
-        if (null == cookie) throw new SellAuthorizeException();
-        // 获取redis
-        String redisValue = stringRedisTemplate.opsForValue().get(cookie.getValue());
-        if (StringUtils.isEmpty(redisValue)) throw new SellAuthorizeException();
-        // 重新设置redis的有效时间
-        stringRedisTemplate.opsForValue().set(cookie.getValue(), RedisConstant.REDIS_NAME, 60l, TimeUnit.SECONDS);
-    }*/
-
-
-
 }

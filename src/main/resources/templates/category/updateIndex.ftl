@@ -14,7 +14,7 @@
         <div class="container-fluid">
             <div class="row clearfix">
                 <div class="col-md-12 column">
-                    <form role="form" action="/seller/category/addOrUpdate" method="post">
+                    <form role="form" action="/sell/seller/category/addOrUpdate" method="post">
                         <input type="hidden" name="categoryId" value="${(productCategory.categoryId)!''}">
                         <div class="form-group">
                             <label>类目名称</label>
