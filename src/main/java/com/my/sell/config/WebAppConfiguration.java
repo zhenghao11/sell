@@ -22,5 +22,24 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("/user/login");
     }
+    
+     @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        super.configureMessageConverters(converters);
 
+        FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
+
+        FastJsonConfig fastJsonConfig = new FastJsonConfig();
+        fastJsonConfig.setSerializerFeatures(
+                SerializerFeature.WriteNullListAsEmpty,
+                SerializerFeature.WriteMapNullValue,
+                SerializerFeature.WriteNullStringAsEmpty
+        );
+        fastConverter.setFastJsonConfig(fastJsonConfig);
+
+        List<MediaType> supportedMediaTypes = new ArrayList<MediaType>();
+        supportedMediaTypes.add(MediaType.ALL); // 全部格式
+        fastConverter.setSupportedMediaTypes(supportedMediaTypes);
+        converters.add(fastConverter);
+    }
 }
