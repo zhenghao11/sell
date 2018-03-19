@@ -15,6 +15,8 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/files/**")
                 .addResourceLocations("file:F:/git/qianduansell/picture/");
+        // linux下配置例子
+        //  registry.addResourceHandler("/files/**").addResourceLocations("file:///xxx具体路径/");
         super.addResourceHandlers(registry);
     }
 
