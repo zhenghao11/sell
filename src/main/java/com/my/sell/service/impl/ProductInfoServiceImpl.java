@@ -20,7 +20,7 @@ import java.util.List;
  * created by hzheng on 2017/7/20.
  */
 @Service
-public class ProductInfoServiceImpl implements ProductInfoService{
+public class ProductInfoServiceImpl implements ProductInfoService {
     @Autowired
     ProductInfoRepository productInfoRepository;
 
@@ -31,13 +31,13 @@ public class ProductInfoServiceImpl implements ProductInfoService{
 
     @Override
     public void increaseProductStock(List<CartDto> cartDtoList) {
-        for(CartDto cartDto : cartDtoList){
+        for (CartDto cartDto : cartDtoList) {
             ProductInfo productInfo = productInfoRepository.findByProductId(cartDto.getProductId());
-            if(null == productInfo){
+            if (null == productInfo) {
                 throw new SellException(ExceptionEnum.PRODUCT_WITHOUT);
             }
             int newStock = productInfo.getProductStock() + cartDto.getProductQuantity();
-            if(newStock <= 0){
+            if (newStock <= 0) {
                 throw new SellException(ExceptionEnum.PRODUCT_FAIL_STOCK);
             }
             productInfo.setProductStock(newStock);
@@ -48,13 +48,13 @@ public class ProductInfoServiceImpl implements ProductInfoService{
 
     @Override
     public void decreaseProductStock(List<CartDto> cartDtoList) {
-        for(CartDto cartDto : cartDtoList){
+        for (CartDto cartDto : cartDtoList) {
             ProductInfo productInfo = productInfoRepository.findByProductId(cartDto.getProductId());
-            if(null == productInfo){
+            if (null == productInfo) {
                 throw new SellException(ExceptionEnum.PRODUCT_WITHOUT);
             }
             int newProductStock = productInfo.getProductStock() - cartDto.getProductQuantity();
-            if(newProductStock < 0){
+            if (newProductStock < 0) {
                 throw new SellException(ExceptionEnum.PRODUCT_FAIL_STOCK);
             }
             productInfo.setProductStock(newProductStock);
@@ -81,10 +81,10 @@ public class ProductInfoServiceImpl implements ProductInfoService{
     @Override
     public void onSale(String productId) {
         ProductInfo productInfo = productInfoRepository.findOne(productId);
-        if(null == productInfo){
+        if (null == productInfo) {
             throw new SellException(ExceptionEnum.PRODUCT_WITHOUT);
         }
-        if(SaleEnum.OFF_SALE.getCode() != productInfo.getProductStatus()){
+        if (SaleEnum.OFF_SALE.getCode().equals(productInfo.getProductStatus())) {
             throw new SellException(ExceptionEnum.ON_SALE_FAIL);
         }
         productInfo.setProductStatus(SaleEnum.ON_SALE.getCode());
@@ -95,10 +95,10 @@ public class ProductInfoServiceImpl implements ProductInfoService{
     @Override
     public void offSale(String productId) {
         ProductInfo productInfo = productInfoRepository.findOne(productId);
-        if(null == productInfo){
+        if (null == productInfo) {
             throw new SellException(ExceptionEnum.PRODUCT_WITHOUT);
         }
-        if(SaleEnum.ON_SALE.getCode() != productInfo.getProductStatus()){
+        if (SaleEnum.ON_SALE.getCode().equals(productInfo.getProductStatus())) {
             throw new SellException(ExceptionEnum.OFF_SALE_FAIL);
         }
         productInfo.setProductStatus(SaleEnum.OFF_SALE.getCode());
