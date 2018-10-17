@@ -23,15 +23,16 @@ public class FileUtil {
 
     /**
      * 保存图片
+     *
      * @param file
      * @return
      */
-    public static String saveImg(MultipartFile file){
+    public static String saveImg(MultipartFile file) {
         try {
             Files.createDirectories(imgPath);
-            String fileName = UUID.randomUUID().toString()+".jpg";
-            Files.copy(file.getInputStream(),imgPath.resolve(fileName));
-            return openPath+fileName;
+            String fileName = UUID.randomUUID().toString() + ".jpg";
+            Files.copy(file.getInputStream(), imgPath.resolve(fileName));
+            return openPath + fileName;
         } catch (IOException e) {
             e.printStackTrace();
             return null;

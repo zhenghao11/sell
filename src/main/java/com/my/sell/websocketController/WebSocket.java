@@ -40,7 +40,7 @@ public class WebSocket {
     }
 
     public void sendMessage(String message) {
-        for (WebSocket webSocket: webSocketSet) {
+        for (WebSocket webSocket : webSocketSet) {
             log.info("【webSocket消息】广播消息, message={}", message);
             try {
                 webSocket.session.getBasicRemote().sendText(message);

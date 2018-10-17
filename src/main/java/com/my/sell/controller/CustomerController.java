@@ -5,7 +5,6 @@ import com.my.sell.viewObject.FoodType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -16,10 +15,10 @@ import java.util.List;
  */
 @Controller
 @RequestMapping(value = "/customer")
-public class CustomerController extends BaseController{
+public class CustomerController extends BaseController {
 
     @RequestMapping(value = "/index")
-    public Object index(Model model){
+    public Object index(Model model) {
         // 家常菜
         List<Food> foodList = new ArrayList<Food>();
         Food food1 = new Food();
@@ -60,8 +59,8 @@ public class CustomerController extends BaseController{
         List<FoodType> foodTypeList = new ArrayList<FoodType>();
         foodTypeList.add(foodType1);
         foodTypeList.add(foodType2);
-        model.addAttribute("foodTypeList",foodTypeList);
-    //    return foodTypeList;
+        model.addAttribute("foodTypeList", foodTypeList);
+        //    return foodTypeList;
         return "common/customer";
     }
 

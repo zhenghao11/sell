@@ -29,7 +29,7 @@ public class RedisLock {
         if (!StringUtils.isEmpty(currentValue) && Long.parseLong(currentValue) < System.currentTimeMillis()) {
             // 获取上一个时间的value 也就是上一个锁的时间
             String oldValue = stringRedisTemplate.opsForValue().getAndSet(key, value);
-            if (!StringUtils.isEmpty(oldValue) && currentValue.equals(oldValue)) return true;
+            return !StringUtils.isEmpty(oldValue) && currentValue.equals(oldValue);
         }
         return false;
     }

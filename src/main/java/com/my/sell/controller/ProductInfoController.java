@@ -14,11 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import java.util.AbstractList;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,34 +24,36 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping(value = "/buyer/product")
-public class ProductInfoController extends BaseController{
+public class ProductInfoController extends BaseController {
+
     @Autowired
     ProductInfoService productInfoService;
+
     @Autowired
     ProductCategoryService productCategoryService;
 
     @GetMapping(value = "/list")
-    public ResultViewObject list(Integer id){
+    public ResultViewObject list() {
         try {
             //查询所有上架商品
             List<ProductInfo> productInfoList = productInfoService.findByProductStatus(0);
-            List<Integer> productCategoryTypeList = productInfoList.stream().map(e -> e.getCategoryType())
+            List<Integer> productCategoryTypeList = productInfoList.stream().map(ProductInfo::getCategoryType)
                     .collect(Collectors.toList());
             //查询所有上架商品对应的类目id
             List<ProductCategory> productCategoryList = productCategoryService.findByCategoryTypeIn(productCategoryTypeList);
             List<ProductCategoryViewObject> productCategoryViewObjectList = new ArrayList<ProductCategoryViewObject>();
-            for(ProductInfo productInfo : productInfoList){
+            for (ProductInfo productInfo : productInfoList) {
                 ProductCategoryViewObject productCategoryViewObject = new ProductCategoryViewObject();
                 ProductInfoViewObject productInfoViewObject = new ProductInfoViewObject();
-                BeanUtils.copyProperties(productInfo,productInfoViewObject);
-                for(ProductCategory productCategory : productCategoryList){
-                    if(productInfo.getCategoryType().equals(productCategory.getCategoryType())){
+                BeanUtils.copyProperties(productInfo, productInfoViewObject);
+                for (ProductCategory productCategory : productCategoryList) {
+                    if (productInfo.getCategoryType().equals(productCategory.getCategoryType())) {
                         productCategoryViewObject.setCategoryName(productCategory.getCategoryName());
                         productCategoryViewObject.setCategoryType(productCategory.getCategoryType());
                     }
                 }
                 //添加productInfoViewObject
-                productCategoryViewObject.setProductInfoViewObject(Arrays.asList(productInfoViewObject));
+                productCategoryViewObject.setProductInfoViewObject(Collections.singletonList(productInfoViewObject));
                 productCategoryViewObjectList.add(productCategoryViewObject);
             }
             return getSuccessResultViewObject(productCategoryViewObjectList);

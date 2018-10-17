@@ -9,11 +9,12 @@ public class OrderRandomUtil {
 
     /**
      * 获取订单号和订单详情号
+     *
      * @return
      */
-    public static synchronized String getOrderRandomNum(){
+    public static synchronized String getOrderRandomNum() {
         Random random = new Random();
         long randomNum = random.nextInt(900) + 100 + System.currentTimeMillis();
-        return randomNum +"";
+        return randomNum + "";
     }
 }

@@ -27,11 +27,11 @@ import java.util.Map;
  */
 @ControllerAdvice
 @Slf4j
-public class AllExceptionHandler extends BaseController{
+public class AllExceptionHandler extends BaseController {
 
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public Object getResultViewObject(Exception e){
+    public Object getResultViewObject(Exception e) {
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = servletRequestAttributes.getRequest();
         String requestURI = request.getRequestURI();
@@ -43,19 +43,20 @@ public class AllExceptionHandler extends BaseController{
         int count = 0; //只打印15行的错误堆栈
         for (StackTraceElement stackTraceElement : errorStack) {
             log.error(stackTraceElement.toString());
-            if(count++ > 14) break;
+            if (count++ > 14) break;
         }
         // 未登录(cookie或者redis没有数据)
-        if(e instanceof SellAuthorizeException){
-            Map<String,Object> map = new HashMap<String,Object>();
-            map.put("msg","请先登录");
-            map.put("url","/seller/user/goToLogin?returnUrl=" + requestURI);
-            return new ModelAndView("common/error",map);
+        if (e instanceof SellAuthorizeException) {
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("msg", "请先登录");
+            map.put("url", "/seller/user/goToLogin?returnUrl=" + requestURI);
+            return new ModelAndView("common/error", map);
         }
-        if(e instanceof IllegalArgumentException) return getFailResultViewObject(ExceptionEnum.ILLEGAL_ARGUMENT_EXCEPTION);
-        if(e instanceof NullPointerException) return getFailResultViewObject(ExceptionEnum.NULL_POINT_EXCEPTION);
-        if(e instanceof PersistenceException) return getFailResultViewObject(ExceptionEnum.PERSISTENCE_EXCEPTION);
-        if(e instanceof SellException) return getFailResultViewObject((SellException) e);
+        if (e instanceof IllegalArgumentException)
+            return getFailResultViewObject(ExceptionEnum.ILLEGAL_ARGUMENT_EXCEPTION);
+        if (e instanceof NullPointerException) return getFailResultViewObject(ExceptionEnum.NULL_POINT_EXCEPTION);
+        if (e instanceof PersistenceException) return getFailResultViewObject(ExceptionEnum.PERSISTENCE_EXCEPTION);
+        if (e instanceof SellException) return getFailResultViewObject((SellException) e);
         return getFailResultViewObject(e);
     }
 }
