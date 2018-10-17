@@ -10,11 +10,11 @@ import java.util.List;
 /**
  * created by hzheng on 2017/7/22.
  */
-public interface OrderDetailRepository extends JpaRepository<OrderDetail,String>{
+public interface OrderDetailRepository extends JpaRepository<OrderDetail, String> {
     List<OrderDetail> findByOrderIdIn(List<String> orderIdList);
 
     @Modifying
-    @Query(value = "DELETE FROM order_detail WHERE order_id = ?1",nativeQuery = true)
+    @Query(value = "DELETE FROM order_detail WHERE order_id = ?1", nativeQuery = true)
     void deleteByOrderId(String orderId);
 
     OrderDetail findByOrderId(String s);

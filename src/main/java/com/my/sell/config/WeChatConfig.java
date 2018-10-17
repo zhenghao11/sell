@@ -19,15 +19,16 @@ import org.springframework.stereotype.Component;
 public class WeChatConfig {
     @Autowired
     WeChatConstant weChatConstant;
+
     @Bean
-    public WxMpService getWxMpService(){
+    public WxMpService getWxMpService() {
         WxMpService wxMpService = new WxMpServiceImpl();
         wxMpService.setWxMpConfigStorage(getWxMpConfigStorage());
         return wxMpService;
     }
 
     @Bean
-    public WxMpConfigStorage getWxMpConfigStorage(){
+    public WxMpConfigStorage getWxMpConfigStorage() {
         WxMpInMemoryConfigStorage wxMpInMemoryConfigStorage = new WxMpInMemoryConfigStorage();
         wxMpInMemoryConfigStorage.setAppId(weChatConstant.getAppAuthID());
         wxMpInMemoryConfigStorage.setSecret(weChatConstant.getAppSecret());

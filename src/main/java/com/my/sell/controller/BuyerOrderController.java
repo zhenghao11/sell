@@ -17,11 +17,12 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping(value = "/buyer/order")
-public class BuyerOrderController extends BaseController{
+public class BuyerOrderController extends BaseController {
     @Autowired
     OrderMasterService orderMasterService;
+
     @PostMapping(value = "/create")
-    public String create(OrderForm orderForm){
+    public String create(OrderForm orderForm) {
         OrderDto orderDto = OrderForm2OrderDTOConverter.convert(orderForm);
         OrderDto oD = orderMasterService.createOrderMasterAndOrderDetail(orderDto);
         Map<String, String> map = new HashMap<>();

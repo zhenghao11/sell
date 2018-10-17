@@ -14,7 +14,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
@@ -27,7 +30,7 @@ import java.util.Map;
 @Controller
 @Slf4j
 //@RequestMapping(value = "pay")
-public class PayController extends BaseController{
+public class PayController extends BaseController {
     @Autowired
     OrderMasterService orderMasterService;
     @Autowired
@@ -37,33 +40,35 @@ public class PayController extends BaseController{
 
     /**
      * 创建支付(需要注册微信商户才可以使用)
+     *
      * @param orderId
      * @param returnUrl
      */
     @GetMapping(value = "/create")
     public String create(@RequestParam("orderId") String orderId,
-                       @RequestParam("returnUrl") String returnUrl,
-                       Model model){
-        log.info("returnUrl:{}",returnUrl);
+                         @RequestParam("returnUrl") String returnUrl,
+                         Model model) {
+        log.info("returnUrl:{}", returnUrl);
         OrderMaster orderMaster = orderMasterService.findByOrderId(orderId);
-        if(null == orderMaster){
+        if (null == orderMaster) {
             throw new SellException(ExceptionEnum.ORDER_LIST_NOT_EXIST);
         }
-        Map<String,Object> map = new HashMap<String,Object>();
+        Map<String, Object> map = new HashMap<String, Object>();
         PayResponse payResponse = payService.create(orderMaster);
-        map.put("payResponse",payResponse);
-        map.put("returnUrl",returnUrl);
+        map.put("payResponse", payResponse);
+        map.put("returnUrl", returnUrl);
         model.addAttribute(map);
         return "pay/create";
     }
 
     /**
      * 支付测试接口
+     *
      * @param openid
      * @return
      */
     @GetMapping(value = "/pay")
-    public ModelAndView pay(@RequestParam("openid") String openid){
+    public ModelAndView pay(@RequestParam("openid") String openid) {
         OrderMaster orderMaster = orderMasterService.findByTest(openid).get(0);
         //
         PayRequest payRequest = new PayRequest();
@@ -72,13 +77,13 @@ public class PayController extends BaseController{
         payRequest.setOrderAmount(orderMaster.getOrderAmount().doubleValue());
         payRequest.setOpenid(openid);
         payRequest.setOrderName("测试支付");
-        log.info("【payRequest:{}】",com.my.sell.utils.JsonUtil.modelToJson(payRequest));
+        log.info("【payRequest:{}】", com.my.sell.utils.JsonUtil.modelToJson(payRequest));
         PayResponse payResponse = bestPayService.pay(payRequest);
-        log.info("【payResponse:{}】",com.my.sell.utils.JsonUtil.modelToJson(payResponse));
-        Map<String,Object> map = new HashMap<String,Object>();
-        map.put("payResponse",payResponse);
-        map.put("returnUrl","http://selltngh.com/#/order/"+orderMaster.getOrderId());
-        return new ModelAndView("pay/create",map);
+        log.info("【payResponse:{}】", com.my.sell.utils.JsonUtil.modelToJson(payResponse));
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("payResponse", payResponse);
+        map.put("returnUrl", "http://selltngh.com/#/order/" + orderMaster.getOrderId());
+        return new ModelAndView("pay/create", map);
     }
 
     /**

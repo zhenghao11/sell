@@ -15,20 +15,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * created by hzheng on 2017/8/19.
  */
 @ControllerAdvice
-public class CookieRedisHandler extends BaseController{
+public class CookieRedisHandler extends BaseController {
 
-/*
     @ExceptionHandler(value = SellAuthorizeException.class)
-    public String goToLogin(Model model){
-        model.addAttribute("msg","请先登录");
-        model.addAttribute("url","/seller/user/goToLogin");
+    public String goToLogin(Model model) {
+        model.addAttribute("msg", "请先登录");
+        model.addAttribute("url", "/seller/user/goToLogin");
         return "common/error";
     }
-*/
 
-/*    @ExceptionHandler(value = SellException.class)
+    @ExceptionHandler(value = SellException.class)
     @ResponseBody
-    public ResultViewObject handlerSellException(SellException e){
+    public ResultViewObject handlerSellException(SellException e) {
         return getFailResultViewObject(e);
-    }*/
+    }
 }

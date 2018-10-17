@@ -8,6 +8,7 @@ import lombok.Getter;
  */
 @Getter
 public class SellException extends RuntimeException {
+    private static final long serialVersionUID = -5588275447880795725L;
     private Integer code;
 
     public SellException(ExceptionEnum exceptionEnum) {

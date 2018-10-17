@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @MapperScan(basePackages = "com.my.sell.mapper")
 public class SellApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SellApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SellApplication.class, args);
+    }
 }

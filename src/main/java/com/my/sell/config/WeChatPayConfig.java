@@ -17,6 +17,7 @@ public class WeChatPayConfig {
     WeChatPayConstant weChatPayConstant;
     @Autowired
     WeChatConstant weChatConstant;
+
     @Bean
     public BestPayServiceImpl bestPayService() {
         BestPayServiceImpl bestPayService = new BestPayServiceImpl();
